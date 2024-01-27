@@ -10,7 +10,7 @@ const NavBar = () => {
       <Link href="/" className="mr-5">
         Bit'n
       </Link>
-      <Link href="/profilesetup">Profile</Link>
+      <Link href="/profile">Profile</Link>
       <Link href="/api/auth/signin">Log In</Link>
       <Link href="/api/auth/signout" className="ml-3">
         Sign Out
