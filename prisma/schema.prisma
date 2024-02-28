@@ -14,4 +14,20 @@ model User {
   id    Int    @id @default(autoincrement())
   email String @unique
   name  String
+  dob   String
+}
+
+model Profile {
+  id                  Int    @id @default(autoincrement())
+  user_id             Int    @unique
+  name                String
+  about_me            String
+  height              String
+  gender              String
+  pronouns            String
+  ethnicity           String
+  relationship_status String
+  looking_for         String
+  hiv_status          String
+  last_tested         String
 }
