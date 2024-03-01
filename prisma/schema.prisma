@@ -19,7 +19,7 @@ model User {
 
 model Profile {
   id                  Int    @id @default(autoincrement())
-  user_id             Int    @unique
+  user_id             Int
   name                String
   about_me            String
   height              String

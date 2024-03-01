@@ -15,15 +15,26 @@ export async function POST(request: NextRequest) {
   if (!validation.success)
     return NextResponse.json(validation.error.errors, { status: 400 });
 
-  const user = await prisma.user.findUnique({ where: { email: body.email } });
-  if (user)
-    return NextResponse.json({ error: "User already exists" }, { status: 400 });
+  // this should check if there is a profile that already exists for this user
+  // if not, create it. >>if so, update it
+  // Profile record should be created with the user_id
 
-  const newUser = await prisma.user.create({
+  // const user = await prisma.user.findUnique({ where: { email: body.email } });
+  console.log(`campervan: ${body}`);
+  const newProfile = await prisma.profile.create({
     data: {
+      user_id: 123,
       name: body.name,
-      email: body.email,
+      about_me: body.about_me,
+      height: body.height,
+      gender: body.gender,
+      pronouns: body.pronouns,
+      ethnicity: body.ethnicity,
+      relationship_status: body.relationship_status,
+      looking_for: body.looking_for,
+      hiv_status: body.hiv_status,
+      last_tested: body.last_tested,
     },
   });
-  return NextResponse.json(newUser, { status: 201 });
+  return NextResponse.json(newProfile, { status: 201 });
 }
